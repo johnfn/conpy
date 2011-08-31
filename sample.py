@@ -18,3 +18,11 @@ def some_fn3(x):
   while x==555:
     pass
   return "yay"
+
+
+# Constrain some_fn4
+# x in range(25)
+def some_fn4(x):
+  if x == 1:
+    print 1/0
+  return "yay"

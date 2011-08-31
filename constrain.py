@@ -51,9 +51,14 @@ for function in constraints:
       arg_list = [random.choice(eval(constraint)) for constraint in constraints[function]]
       last_args = arg_list
       getattr(module, function)(*arg_list)
-  except:
+  except KeyboardInterrupt:
     passed = False
     print "Function %s has gone into apparent infinite loop with arguments %s." % (function, last_args)
+  except:
+    passed = False
+
+    e = str(sys.exc_info()[0]) # get exception
+    print "Function %s has raised exception %s on arguments %s" % (function, e, last_args)
 
   if passed:
     print "Function %s PASS." % function
